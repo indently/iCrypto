@@ -7,11 +7,16 @@
 
 import Foundation
 
-class CryptoAPI{
+class CryptoAPI {
     // Get your API KEY here: https://www.coinapi.io/pricing?apikey
-    let API_KEY = "API_KEY"
+    let API_KEY = "YOUR_KEY"
     
-    func getCryptoData(currency: String, _ completion:@escaping ([Rate]) -> ()) {
+    func getCryptoData(currency: String, previewMode: Bool, _ completion:@escaping ([Rate]) -> ()) {
+        if previewMode {
+            completion(Rate.sampleRates)
+            return
+        }
+        
         let urlString = "https://rest.coinapi.io/v1/exchangerate/\(currency)?invert=false&apikey=\(API_KEY)"
         
         // Create the URL

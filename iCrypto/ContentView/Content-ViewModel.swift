@@ -19,7 +19,8 @@ extension ContentView {
         }
         
         func refreshData() {
-            CryptoAPI().getCryptoData(currency: "EUR") { newRates in
+            // Set previewMode to true when debugging to avoid using API requests
+            CryptoAPI().getCryptoData(currency: "EUR", previewMode: true) { newRates in
                 DispatchQueue.main.async {
                     withAnimation {
                         self.rates = newRates

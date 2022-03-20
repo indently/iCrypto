@@ -22,7 +22,9 @@ struct Rate: Decodable, Identifiable {
         var tempRates = [Rate]()
         for _ in 1...20 {
             let randomNumber = Double(Array(0...1000).randomElement()!)
-            let sampleRate = Rate(time: "00210301021", asset_id_quote: "BTC", rate: randomNumber)
+            let randomCurrency = ["BTC", "ETH", "LOL", "XRP"].randomElement()!
+            
+            let sampleRate = Rate(time: "00210301021", asset_id_quote: randomCurrency, rate: randomNumber)
             tempRates.insert(sampleRate, at: 0)
         }
         return tempRates

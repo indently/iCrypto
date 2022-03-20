@@ -16,22 +16,22 @@ struct ContentView: View {
                 VStack {
                     Stepper("Amount: \(Int(vm.amount))€", value: $vm.amount, step: 100)
                     Slider(value: $vm.amount, in: 1...10_000)
-                    Divider()
                 }
                 .padding()
 
-                // Use Rate.sampleRates for debugging
                 List(vm.filteredRates) { item in
                     HStack() {
                         Text(item.asset_id_quote)
                             .bold()
+                        Spacer()
                         Text("€\(vm.calcRate(rate: item), specifier: "%.2f")")
                     }
                 }
                 .listStyle(.plain)
+                .transition(.opacity)
                 .searchable(text: $vm.searchText)
+                .onAppear(perform: vm.refreshData)
             }
-            .onAppear(perform: vm.refreshData)
             .navigationTitle("iCrypto")
             .toolbar {
                 ToolbarItem {
