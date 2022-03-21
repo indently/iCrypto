@@ -20,15 +20,14 @@ struct ContentView: View {
                 .padding()
 
                 List(vm.filteredRates) { item in
-                    HStack() {
+                    HStack {
                         Text(item.asset_id_quote)
                             .bold()
                         Spacer()
-                        Text("€\(vm.calcRate(rate: item), specifier: "%.2f")")
+                        Text("\(vm.calcRate(rate: item), specifier: "%.2f")")
                     }
                 }
                 .listStyle(.plain)
-                .transition(.opacity)
                 .searchable(text: $vm.searchText)
                 .onAppear(perform: vm.refreshData)
             }

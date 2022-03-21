@@ -9,7 +9,7 @@ import Foundation
 
 class CryptoAPI {
     // Get your API KEY here: https://www.coinapi.io/pricing?apikey
-    let API_KEY = "YOUR_KEY"
+    let API_KEY = "6412D165-A401-475F-BED8-B3752F9B4C63"
     
     func getCryptoData(currency: String, previewMode: Bool, _ completion:@escaping ([Rate]) -> ()) {
         if previewMode {
